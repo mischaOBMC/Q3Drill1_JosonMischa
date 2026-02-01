@@ -31,6 +31,8 @@ def calculate_GWA(e):
 
     document.getElementById("gwa").innerHTML = (f"Your GWA is {GWA:.2f}")
 
+    GWA = round(GWA, 2)
+
     if 94 <= GWA <= 100:
         level = "Bergamo I"
     elif 87 <= GWA < 94:
