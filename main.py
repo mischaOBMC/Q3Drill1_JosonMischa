@@ -35,12 +35,12 @@ def calculate_GWA(e):
         level = "Bergamo I"
     elif 87 <= GWA < 94:
         level = "Bergamo II"
-    elif 80 <= GWA < 87:
-        level = "Bergamo III"
-    elif 75 <= GWA < 80:
-        level = "Perugia I"
-    elif 65 <= GWA < 75:
-        level = "Perugia II"
+    elif GWA < 87 and GWA >= 80:
+        level = "is Bergamo III"
+    elif GWA < 80 and GWA >= 75:
+        level = "is Perugia I"
+    elif GWA < 75 and GWA >= 65:
+        level = "is Perugia II"
     else:
         level = "cannot be classified"
 
