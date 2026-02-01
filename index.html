@@ -3,315 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://pyscript.net/releases/2024.3.1/core.css" />
-    <script type="module" src="https://pyscript.net/releases/2024.3.1/core.js"></script>
-    <title>Student Grade Calculator</title>
-</head>
-<style>
-    @font-face {
-        font-family: bella;
-        src: url(bella.ttf);
-    }
-    @font-face {
-        font-family: Relationship\ of\ mélodrame;
-        src: url(Relationship\ of\ mélodrame.ttf);
-    }
-    @font-face {
+    <title>Simple Average Finder</title>
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+    <style>
+        @font-face{
         font-family: rsom;
         src: url(rsom.ttf);
-    }
-    body{
-        background-image: url(bg.png) ;
-        font-family: Arial, sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-size: cover;
-        background-position: center;
-        height: 100vh;
-        margin: 0;
-    }
-
-    .container{
-        background-color: #68654c;
-        width: 90%;
-        max-width: 1050px;
-        min-height: 490px;
-        height: auto;
-        padding: 30px;
-        border-radius: 45px;
-        box-shadow: 0 8px 20px #574d45;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .container:hover{
-        transform: translateY(-5px);
-        box-shadow: 0 12px 30px #574d45;
-    }
-    h1{
-        text-align: center;
-        margin-bottom: 20px;
-        font-size: 60px;
-        margin-top: -2px;
-        color: floralwhite;
-        font-family:Relationship\ of\ mélodrame ;
-    }
-
-    input{
-        color: #a08c6e;
+        } 
+        @font-face{
         font-family: bella;
-        font-size: 17px;
-        font-weight: bold;
-    }
-
-    .top{
-        display: flex;
-        gap: 20px;
-        margin-bottom: 20px;
-    }
-
-    .topinputs{
-        display: flex;
-        align-content: center;
-        align-items: center;
-        
-    }
-
-    .topinputs label{
-        background-color: #ccaca0; 
-        opacity: 90%;
-        color: floralwhite;
-        padding: 10px 15px;
-        border-radius: 6px 0 0 6px;
-        font-weight: bold;
-        width: 190px;
-        text-align: center;
-        height: 27px;
-        font-family: bella;
-        font-size: 20px;
-    }
-
-    .topinputs input{
-        opacity: 90%;
-        padding: 10px;
-        flex: 1; 
-        border: 2px solid #ccaca0;
-        border-radius: 0 6px 6px 0;
-        outline: none;
-        font-size: 16px;
-        background-color: rgb(250, 247, 240);
-        width: 250px;
-    }
-
-    .main{
-        display: flex;
-        justify-content: space-between;
-        margin-top: 15px;
-        align-items: flex-start;
-        flex-wrap: wrap;
-    }
-
-    .grades {
-        display: grid;
-        grid-template-columns: repeat(2, 3fr);
-        gap: 15px 20px;
-        width: 480px; 
-    }
-
-    .gradeinput{
-        display: flex;
-        align-items: center;
-        margin-top: 5px;
-    }
-
-    .gradeinput label {
-        background-color: #ccaca0; 
-        opacity: 90%;
-        color: floralwhite;
-        padding: 10px 15px;
-        border-radius: 6px 0 0 6px;
-        font-weight: bold;
-        width: 100px;
-        text-align: center;
-        height: 33px;
-        font-family: bella;
-        font-size: 22px;
-    }
-
-    .gradeinput input {
-        opacity: 90%;
-        padding: 10px;
-        border: 2px solid #ccaca0;
-        border-radius: 0 6px 6px 0;
-        outline: none;
-        font-size: 22px;
-        background-color: rgb(250, 247, 240);
-        width: 100px;
-        height: 30px;
-        margin-left: 5px;
-        font-family: rsom;
-    }
-
-    p{
-        margin-bottom: 20px;
-        margin-top: 15px;
-        font-size: 30px;
-        color: floralwhite;
-        font-family:Relationship\ of\ mélodrame ;  
-    }
-    hr{
-        color: floralwhite;
-        opacity: 50%;
-    }
-
-    button{
-        background-color:#a08c6e;
-        size: 20px;
-        outline-color: #574d45;
-        margin-top: 5px;
-        font-size: 30px;
-        color: floralwhite;
-        outline: none;
-        border-radius: 60px;
-        width: 400px;
-        font-family: bella;
-        font-weight: bold;
-        border: #a08c6e;
-        margin-left: 65px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    button:hover {
-        cursor: pointer;
-        background-color: #73644d;
-        transition: background-color 0.4s ease, transform 0.5s ease;
-        transform: scale(1.1); 
-    }
-
-    .results{
-        background-color: floralwhite;
-        width: 430px;
-        min-height: 260px;
-        height: auto;
-        border-radius: 25px;
-        padding: 25px 30px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        gap: 8px; 
-        opacity: 90%;
-        border: 3px solid #ccaca0;
-        margin-top: -40px;
-        align-items: flex-start;
-    }
-
-    .name{
-        background-color: #ccaca0;
-        border-left: 8px solid #af8d81;
-        padding: 12px 15px;
-        border-radius: 10px;
-        font-weight: bold;
-        color: floralwhite;
-        font-family: bella;
-        font-size: 26px;
-    }
-
-    .left{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    }   
-
-    .gradeslayout{
-        display: grid;
-        grid-template-columns: repeat(2, 1fr); 
-        grid-template-rows: repeat(3, auto); 
-        gap: 8px 10px; 
-        width: 100%;
-    }
-
-    .gradesoutput{
-        margin-top: 15px;
-        font-family: rsom;
-        color: #a08c6e;
-        font-size:25px;
-    }
-
-    .gwa{
-        margin-top: 15px;
-        background-color: #ccaca0;
-        padding: 12px 15px;
-        border-radius: 10px;
-        font-weight: bold;
-        color: floralwhite;
-        font-family: rsom;
-        font-size: 26px;
-    }
-</style>
+        src: url(bella.ttf);
+        }   
+        body{
+            background-image: url(bg.jpg);
+            text-align: center;
+            color: floralwhite;
+        }
+        .avg{
+            background-color: #3e5e61;
+            color: white;
+            opacity: 80%;
+            padding: 15px;
+            margin-top: 190px;
+            width: 1200px;
+            border-radius: 290px;
+            margin-left: 120px;
+        }
+        h2{
+            color: white;
+            opacity: 90%;
+            padding: 3px;
+            font-size: 80px;
+            font-family: rsom;
+            margin-bottom: 3px;
+            margin-top: 1px;
+        }
+        .result{
+            color: white;
+            opacity: 90%;
+            padding: 3px;
+            font-size: 35px;
+            font-family: rsom;
+            margin-bottom: 3px;
+        }
+        input{
+            padding: 15px;
+            border-radius: 90px;
+            width: 900px;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            text-align: center;
+            font-family: rsom;
+            font-size: 30px;
+            color: #3e5e61;
+        }
+        button{
+            margin-top: 20px;
+            font-size: 30px;
+            background-color: #7f999c;
+            color: floralwhite;
+            outline: none;
+            border-radius: 30px;
+            width: 200px;
+            font-family: bella;
+        }
+        button:hover{
+            background-color: #b3cccf;
+            color: floralwhite;
+            cursor: pointer;
+        }
+    </style>
+</head>
 <body>
-   <div class="container">
-    <h1>Student Grade Calculator</h1>
-
-    <div class="top">
-        <div class="topinputs">
-            <label>First Name</label>
-            <input type="text" id="Fname">
-        </div>
-        <div class="topinputs">
-            <label>Last Name</label>
-            <input type="text" id="Lname">
-        </div>
-        </div>
-    <hr>
-    <p>Enter your grades:</p>
-    
-    <div class="main">
-        <div class="left">
-            <div class="grades">
-                <div class="gradeinput">
-                    <label>Science</label>
-                    <input type="number" id="Science">
-                </div>
-                <div class="gradeinput">
-                    <label>Math</label>
-                    <input type="number" id="Math">
-                </div>
-                <div class="gradeinput">
-                    <label>English</label>
-                    <input type="number" id="English">
-                </div>
-                <div class="gradeinput">
-                    <label>Filipino</label>
-                    <input type="number" id="Filipino">
-                </div>
-                <div class="gradeinput">
-                    <label>ICT</label>
-                    <input type="number" id="ICT">
-                </div>
-                <div class="gradeinput">
-                    <label>PE</label>
-                    <input type="number" id="PE">
-                </div>
-            </div>
-            <button py-click="calculate_GWA">Calculate GWA</button>
-        </div>
-
-        <div class="results">
-            <div id="name" class="name">Name:</div>
-            <div id="gs" class="gs"></div>
-            <div class="gradeslayout">
-                <div id="sci" class="gradesoutput">Science:</div>
-                <div id="math" class="gradesoutput">Math:</div>
-                <div id="english" class="gradesoutput">English:</div>
-                <div id="fil" class="gradesoutput">Fiipino:</div>
-                <div id="ict" class="gradesoutput">ICT:</div>
-                <div id="pe" class="gradesoutput">PE:</div>
-            </div>
-            <div id="gwa" class="gwa">Your GWA is ...</div>   
-            <div id="grade_class" class="gwa">Your level is </div>  
-        </div> 
-        </div>
-     </div>
-
-<script type="py" src="main.py"></script>
+  <div class="avg">
+      <h2>⬩ Grade Checker ⬩</h2>
+      <input type="number" id="num1" placeholder="Enter First Semester Average"><br>
+      <input type="number" id="num2" placeholder="Enter Second Semester Average:"><br>
+      <button py-click="Operation">compute</button>
+      <p id="result" class="result"></p>
+      <p id="result2" class="result2"></p>
+  </div>
+  <script type="py" src="main.py"></script>
 </body>
 </html>
