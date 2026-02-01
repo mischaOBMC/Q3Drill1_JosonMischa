@@ -31,16 +31,16 @@ def calculate_GWA(e):
 
     document.getElementById("gwa").innerHTML = (f"Your GWA is {GWA:.2f}")
 
-    if GWA >= 94 and GWA <= 100:
-        level = " is Bergamo I"
-    elif GWA <= 93 and GWA >= 87:
-        level = "is Bergamo II"
-    elif GWA <= 86 and GWA >= 80 :
-        level = "is Bergamo III"
-    elif GWA <= 79 and GWA >= 75:
-        level = "is Perugia I"
-    elif GWA <= 74 and GWA >= 65:
-        level = "is Perugia II"
+    if 94 <= GWA <= 100:
+        level = "Bergamo I"
+    elif 87 <= GWA < 94:
+        level = "Bergamo II"
+    elif 80 <= GWA < 87:
+        level = "Bergamo III"
+    elif 75 <= GWA < 80:
+        level = "Perugia I"
+    elif 65 <= GWA < 75:
+        level = "Perugia II"
     else:
         level = "cannot be classified"
 
